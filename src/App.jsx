@@ -3,12 +3,32 @@ import Button from './components/Button/Button';
 import JournalItem from './components/JournalItem/JournalItem';
 
 function App() {
+  const data = [
+    {
+      title: ' Подготовка к обновлению курсов по React',
+      date: new Date().toLocaleDateString(),
+      text: 'Все курсы по React будут обновлены до последней версии библиотеки.',
+    },
+    {
+      title: ' iOS 15: первый взгляд на новую операционную систему Apple',
+      date: new Date().toLocaleDateString(),
+      text: 'Apple представила новую версию операционной системы iOS 15 на конференции WWDC 2021.',
+    },
+    {
+      title: 'vivo представила новый смартфон X60t Pro+ с процессором Snapdragon 888',
+      date: new Date().toLocaleDateString(),
+      text: 'Компания vivo представила новый флагманский смартфон X60t Pro+ с процессором Snapdragon 888 и тройной камерой.',
+    },
+  ];
+
   return (
     <>
       <h1>Title</h1>
       <p>Project</p>
       <Button />
-      <JournalItem />
+      <JournalItem title={data[0].title} date={data[0].date} text={data[0].text} />
+      <JournalItem title={data[1].title} date={data[1].date} text={data[1].text} />
+      <JournalItem title={data[2].title} date={data[2].date} text={data[2].text} />
     </>
   );
 }

@@ -1,9 +1,9 @@
 import './JournalItem.css';
 
-function JournalItem() {
-  const title = ' Подготовка к обновлению курсов по React';
-  const date = new Date().toLocaleDateString();
-  const text = 'Все курсы по React будут обновлены до последней версии библиотеки.';
+function JournalItem({ title, date, text }) {
+  // const title = ' Подготовка к обновлению курсов по React';
+  // const date = new Date().toLocaleDateString();
+  // const text = 'Все курсы по React будут обновлены до последней версии библиотеки.';
 
   return (
     <div className="journal-item">
