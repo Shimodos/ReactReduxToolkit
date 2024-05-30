@@ -5,6 +5,11 @@
   cursor: pointer;
   transition: background 0.25s;
   font-size: 16px;
+  border: none;
+}
+
+.button:focus {
+  outline: none;
 }
 
 .accent:hover {
@@ -14,4 +19,5 @@
 .accent {
   background: #312EB5;
   color: #fff;
+  border: none;
 }

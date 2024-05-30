@@ -13,3 +13,12 @@
 .card-button:hover {
   background: rgba(255, 255, 255, 0.10);
 }
+
+.card-button:focus {
+  outline: none;
+}
+
+/* .card-button:active {
+  outline: none;
+  border: none;
+} */

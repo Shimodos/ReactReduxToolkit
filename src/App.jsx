@@ -27,13 +27,17 @@ function App() {
       <h1>Title</h1>
       <p>Project</p>
       <Button />
+
       <CardButton>New entry</CardButton>
+
       <CardButton>
         <JournalItem title={data[0].title} date={data[0].date} text={data[0].text} />
       </CardButton>
+
       <CardButton>
         <JournalItem title={data[1].title} date={data[1].date} text={data[1].text} />
       </CardButton>
+
       <CardButton>
         <JournalItem title={data[2].title} date={data[2].date} text={data[2].text} />
       </CardButton>
