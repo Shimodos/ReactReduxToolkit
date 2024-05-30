@@ -6,17 +6,17 @@ function App() {
   const data = [
     {
       title: ' Подготовка к обновлению курсов по React',
-      date: new Date().toLocaleDateString(),
+      date: new Date(),
       text: 'Все курсы по React будут обновлены до последней версии библиотеки.',
     },
     {
       title: ' iOS 15: первый взгляд на новую операционную систему Apple',
-      date: new Date().toLocaleDateString(),
+      date: new Date(),
       text: 'Apple представила новую версию операционной системы iOS 15 на конференции WWDC 2021.',
     },
     {
       title: 'vivo представила новый смартфон X60t Pro+ с процессором Snapdragon 888',
-      date: new Date().toLocaleDateString(),
+      date: new Date(),
       text: 'Компания vivo представила новый флагманский смартфон X60t Pro+ с процессором Snapdragon 888 и тройной камерой.',
     },
   ];
