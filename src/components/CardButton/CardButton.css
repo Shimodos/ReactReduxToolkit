@@ -7,7 +7,9 @@
   cursor: pointer;
   text-align: start;
   display: block;
-
+  width: 100%;
+  max-height: 200px;
+  overflow: hidden;
 }
 
 .card-button:hover {
