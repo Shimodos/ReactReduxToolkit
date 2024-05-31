@@ -1,7 +1,8 @@
 import './Header.css';
+// import Logo from '../../../public/Logo';
 
 function Header() {
-  return <>Logo</>;
+  return <img className="logo" src="/Logo.svg" alt="Logo Journal"></img>;
 }
 
 export default Header;

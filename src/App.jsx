@@ -1,5 +1,5 @@
 import './App.css';
-import Button from './components/Button/Button';
+// import Button from './components/Button/Button';
 import CardButton from './components/CardButton/CardButton';
 import JournalItem from './components/JournalItem/JournalItem';
 import Body from './layout/Dody/Body';
@@ -7,6 +7,7 @@ import LeftPanel from './layout/LeftPanel/LeftPanel';
 import Header from './components/Header/Header';
 import JournalList from './components/JournalList/JournalList';
 import JournalAddButton from './components/JournalAddButton/JournalAddButton';
+import JournalForm from './components/JournalForm/JournalForm';
 
 function App() {
   const data = [
@@ -46,7 +47,9 @@ function App() {
           </CardButton>
         </JournalList>
       </LeftPanel>
-      <Body>Body</Body>
+      <Body>
+        <JournalForm />
+      </Body>
     </div>
   );
 }
