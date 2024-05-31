@@ -5,12 +5,16 @@ import './JournalForm.css';
 
 function JournalForm() {
   const [indentData, setIndentData] = useState('');
+  const [state, setState] = useState({
+    age: 31,
+  });
 
   const inputChange = (e) => {
     setIndentData(e.target.value);
   };
 
   const addJournalItem = (e) => {
+    setState({ ...state, age: 32 });
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData.entries());
     e.preventDefault();
@@ -20,6 +24,7 @@ function JournalForm() {
   return (
     <>
       <form className="journal-form" onSubmit={addJournalItem}>
+        {state.age}
         <input type="title" name="title" />
         <input type="date" name="data" />
         <input type="text" name="tag" value={indentData} onChange={inputChange} />
