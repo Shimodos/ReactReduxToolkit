@@ -29,12 +29,12 @@ function JournalForm({ onSubmit }) {
     } else {
       setFormValidState((prevState) => ({ ...prevState, date: true }));
     }
-    if (!formProps.tag?.trim().length) {
-      setFormValidState((prevState) => ({ ...prevState, tag: false }));
-      isFormValid = false;
-    } else {
-      setFormValidState((prevState) => ({ ...prevState, tag: true }));
-    }
+    // if (!formProps.tag?.trim().length) {
+    //   setFormValidState((prevState) => ({ ...prevState, tag: false }));
+    //   isFormValid = false;
+    // } else {
+    //   setFormValidState((prevState) => ({ ...prevState, tag: true }));
+    // }
     if (!formProps.text?.trim().length) {
       setFormValidState((prevState) => ({ ...prevState, text: false }));
       isFormValid = false;
@@ -54,24 +54,20 @@ function JournalForm({ onSubmit }) {
         <input
           type="title"
           name="title"
-          style={{ border: formValidState.title ? 'none' : '1px solid red' }}
+          className={`input ${formValidState.title ? '' : 'invalid'}`}
         />
         <input
           type="date"
           name="date"
-          style={{ border: formValidState.date ? 'none' : '1px solid red' }}
+          className={`input ${formValidState.date ? '' : 'invalid'}`}
         />
-        <input
-          type="text"
-          name="tag"
-          style={{ border: formValidState.tag ? 'none' : '1px solid red' }}
-        />
+        <input type="text" name="tag" />
         <textarea
           name="text"
           id=""
           cols="30"
           rows="10"
-          style={{ border: formValidState.text ? 'none' : '1px solid red' }}
+          className={`input ${formValidState.text ? '' : 'invalid'}`}
         ></textarea>
         <Button
           text="Save"
