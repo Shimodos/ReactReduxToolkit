@@ -3,18 +3,62 @@
   flex-direction: column;
   gap: 30px;
   margin-top: 20px;
-  width: 400px;
+}
+
+
+
+.input {
+  border: none;
+  background: none;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  font-family: "Source Sans 3", sans-serif;
+  color: rgba(255, 255, 255, 0.87);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  border: none;
+}
+
+textarea {
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
+  border: none;
+}
+
+.input-title {
+  border: none;
+  background: none;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: normal;
+  font-family: "Source Sans 3", sans-serif;
+  color: rgba(255, 255, 255, 0.87);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  width: 100%;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 100px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 50px;
 }
 
 .invalid {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   background: rgb(116, 56, 56);
-}
-
-.input {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  background: rgba(255, 255, 255, 0.10);
-  color: #fff;
 }

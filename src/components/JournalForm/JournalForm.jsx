@@ -1,7 +1,8 @@
+import styles from './JournalForm.module.css';
+
 import Button from '../Button/Button';
 import { useState } from 'react';
-
-import styles from './JournalForm.module.css';
+import cn from 'classnames';
 
 function JournalForm({ onSubmit }) {
   const [formValidState, setFormValidState] = useState({
@@ -51,24 +52,45 @@ function JournalForm({ onSubmit }) {
   return (
     <>
       <form className={styles['journal-form']} onSubmit={addJournalItem}>
-        <input
-          type="title"
-          name="title"
-          className={`${styles['input']} ${formValidState.title ? '' : styles['invalid']}`}
-        />
-        <input
-          type="date"
-          name="date"
-          className={`${styles['input']} ${formValidState.date ? '' : styles['invalid']}`}
-        />
-        <input type="text" name="tag" className={styles.input} />
-        <textarea
-          name="text"
-          id=""
-          cols="30"
-          rows="10"
-          className={`${styles['input']} ${formValidState.text ? '' : styles['invalid']}`}
-        ></textarea>
+        <div>
+          <input
+            type="title"
+            name="title"
+            className={cn(styles['input-title'], { [styles['invalid']]: !formValidState.title })}
+          />
+        </div>
+
+        <div className={styles['form-row']}>
+          <label htmlFor="date" className={styles['form-label']}>
+            <img src="/calendar.svg" alt="calendar" />
+            <span>Date</span>
+          </label>
+          <input
+            type="date"
+            name="date"
+            id="date"
+            className={cn(styles['input'], { [styles['invalid']]: !formValidState.date })}
+          />
+        </div>
+
+        <div className={styles['form-row']}>
+          <label htmlFor="tag" className={styles['form-label']}>
+            <img src="/folder.svg" alt="folder" />
+            <span>Tags</span>
+          </label>
+          <input type="text" name="tage" id="tag" className={styles.input} />
+        </div>
+
+        <div className={styles['post']}>
+          <textarea
+            name="text"
+            id=""
+            cols="30"
+            rows="10"
+            className={cn(styles['input'], { [styles['invalid']]: !formValidState.text })}
+          ></textarea>
+        </div>
+
         <Button
           text="Save"
           onClick={() => {
