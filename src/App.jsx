@@ -17,6 +17,12 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    if (items.length) {
+      localStorage.setItem('date', JSON.stringify(items));
+    }
+  }, [items]);
+
   const addJournalItem = (item) => {
     setItems((oldItem) => [
       ...oldItem,
