@@ -1,17 +1,37 @@
 import styles from './JournalForm.module.css';
 
 import Button from '../Button/Button';
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import cn from 'classnames';
 import { formReducer, INITIAL_STATE } from './JournalForm.state';
 
 function JournalForm({ onSubmit }) {
   const [formaState, dispatchForm] = useReducer(formReducer, INITIAL_STATE);
   const { isValid, isFormReadyToSubmit, values } = formaState;
+  const titleRef = useRef();
+  const dateRef = useRef();
+  const textRef = useRef();
+
+  const focusInvalidInput = (isValid) => {
+    switch (true) {
+      case !isValid.title:
+        titleRef.current.focus();
+        break;
+      case !isValid.date:
+        dateRef.current.focus();
+        break;
+      case !isValid.text:
+        textRef.current.focus();
+        break;
+      default:
+        break;
+    }
+  };
 
   useEffect(() => {
     let timeoutId;
     if (!isValid.title || !isValid.date || !isValid.tag || !isValid.text) {
+      focusInvalidInput(isValid);
       timeoutId = setTimeout(() => {
         dispatchForm({ type: 'RESET_VALIDATION' });
       }, 2000);
@@ -44,6 +64,7 @@ function JournalForm({ onSubmit }) {
         <div>
           <input
             type="title"
+            ref={titleRef}
             onChange={handleChange}
             value={values.title}
             name="title"
@@ -60,6 +81,7 @@ function JournalForm({ onSubmit }) {
           </label>
           <input
             type="date"
+            ref={dateRef}
             onChange={handleChange}
             value={values.date}
             name="date"
@@ -86,6 +108,7 @@ function JournalForm({ onSubmit }) {
         <div className={styles['post']}>
           <textarea
             name="text"
+            ref={textRef}
             onChange={handleChange}
             value={values.text}
             id=""
