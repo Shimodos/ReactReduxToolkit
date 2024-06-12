@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import { useEffect, useReducer, useRef } from 'react';
 import cn from 'classnames';
 import { formReducer, INITIAL_STATE } from './JournalForm.state';
+import Input from '../Input/Input';
 
 function JournalForm({ onSubmit }) {
   const [formaState, dispatchForm] = useReducer(formReducer, INITIAL_STATE);
@@ -62,15 +63,14 @@ function JournalForm({ onSubmit }) {
     <>
       <form className={styles['journal-form']} onSubmit={addJournalItem}>
         <div>
-          <input
+          <Input
             type="title"
             ref={titleRef}
             onChange={handleChange}
             value={values.title}
             name="title"
-            className={cn(styles['input-title'], {
-              [styles['invalid']]: !isValid.title,
-            })}
+            appearence="title"
+            isValid={isValid.title}
           />
         </div>
 
@@ -79,14 +79,14 @@ function JournalForm({ onSubmit }) {
             <img src="/calendar.svg" alt="calendar" />
             <span>Date</span>
           </label>
-          <input
+          <Input
             type="date"
             ref={dateRef}
             onChange={handleChange}
             value={values.date}
             name="date"
             id="date"
-            className={cn(styles['input'], { [styles['invalid']]: !isValid.date })}
+            isValid={isValid.date}
           />
         </div>
 
@@ -95,14 +95,7 @@ function JournalForm({ onSubmit }) {
             <img src="/folder.svg" alt="folder" />
             <span>Tags</span>
           </label>
-          <input
-            type="text"
-            name="tag"
-            onChange={handleChange}
-            value={values.tag}
-            id="tag"
-            className={styles.input}
-          />
+          <Input type="text" name="tag" onChange={handleChange} value={values.tag} id="tag" />
         </div>
 
         <div className={styles['post']}>
