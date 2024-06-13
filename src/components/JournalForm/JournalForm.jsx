@@ -1,10 +1,11 @@
 import styles from './JournalForm.module.css';
 
 import Button from '../Button/Button';
-import { useEffect, useReducer, useRef } from 'react';
+import { useEffect, useReducer, useRef, useContext } from 'react';
 import cn from 'classnames';
 import { formReducer, INITIAL_STATE } from './JournalForm.state';
 import Input from '../Input/Input';
+import { UserContext } from '../../context/user.context';
 
 function JournalForm({ onSubmit }) {
   const [formaState, dispatchForm] = useReducer(formReducer, INITIAL_STATE);
@@ -12,6 +13,7 @@ function JournalForm({ onSubmit }) {
   const titleRef = useRef();
   const dateRef = useRef();
   const textRef = useRef();
+  const { userId } = useContext(UserContext);
 
   const focusInvalidInput = (isValid) => {
     switch (true) {
@@ -49,6 +51,10 @@ function JournalForm({ onSubmit }) {
     }
   }, [isFormReadyToSubmit]);
 
+  useEffect(() => {
+    dispatchForm({ type: 'SET_VALUE', payload: { userId } });
+  }, [userId]);
+
   const handleChange = (e) => {
     dispatchForm({ type: 'SET_VALUE', payload: { [e.target.name]: e.target.value } });
   };
@@ -60,65 +66,63 @@ function JournalForm({ onSubmit }) {
   };
 
   return (
-    <>
-      <form className={styles['journal-form']} onSubmit={addJournalItem}>
-        <div>
-          <Input
-            type="title"
-            ref={titleRef}
-            onChange={handleChange}
-            value={values.title}
-            name="title"
-            appearence="title"
-            isValid={isValid.title}
-          />
-        </div>
-
-        <div className={styles['form-row']}>
-          <label htmlFor="date" className={styles['form-label']}>
-            <img src="/calendar.svg" alt="calendar" />
-            <span>Date</span>
-          </label>
-          <Input
-            type="date"
-            ref={dateRef}
-            onChange={handleChange}
-            value={values.date}
-            name="date"
-            id="date"
-            isValid={isValid.date}
-          />
-        </div>
-
-        <div className={styles['form-row']}>
-          <label htmlFor="tag" className={styles['form-label']}>
-            <img src="/folder.svg" alt="folder" />
-            <span>Tags</span>
-          </label>
-          <Input type="text" name="tag" onChange={handleChange} value={values.tag} id="tag" />
-        </div>
-
-        <div className={styles['post']}>
-          <textarea
-            name="text"
-            ref={textRef}
-            onChange={handleChange}
-            value={values.text}
-            id=""
-            cols="30"
-            rows="10"
-            className={cn(styles['input'], { [styles['invalid']]: !isValid.text })}
-          ></textarea>
-        </div>
-
-        <Button
-          text="Save"
-          onClick={() => {
-            console.log('Press');
-          }}
+    <form className={styles['journal-form']} onSubmit={addJournalItem}>
+      <div>
+        <Input
+          type="title"
+          ref={titleRef}
+          onChange={handleChange}
+          value={values.title}
+          name="title"
+          appearence="title"
+          isValid={isValid.title}
         />
-      </form>
-    </>
+      </div>
+
+      <div className={styles['form-row']}>
+        <label htmlFor="date" className={styles['form-label']}>
+          <img src="/calendar.svg" alt="calendar" />
+          <span>Date</span>
+        </label>
+        <Input
+          type="date"
+          ref={dateRef}
+          onChange={handleChange}
+          value={values.date}
+          name="date"
+          id="date"
+          isValid={isValid.date}
+        />
+      </div>
+
+      <div className={styles['form-row']}>
+        <label htmlFor="tag" className={styles['form-label']}>
+          <img src="/folder.svg" alt="folder" />
+          <span>Tags</span>
+        </label>
+        <Input type="text" name="tag" onChange={handleChange} value={values.tag} id="tag" />
+      </div>
+
+      <div className={styles['post']}>
+        <textarea
+          name="text"
+          ref={textRef}
+          onChange={handleChange}
+          value={values.text}
+          id=""
+          cols="30"
+          rows="10"
+          className={cn(styles['input'], { [styles['invalid']]: !isValid.text })}
+        ></textarea>
+      </div>
+
+      <Button
+        text="Save"
+        onClick={() => {
+          console.log('Press');
+        }}
+      />
+    </form>
   );
 }
 
