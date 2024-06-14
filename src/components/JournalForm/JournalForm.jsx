@@ -117,11 +117,12 @@ function JournalForm({ onSubmit }) {
       </div>
 
       <Button
-        text="Save"
         onClick={() => {
           console.log('Press');
         }}
-      />
+      >
+        Save
+      </Button>
     </form>
   );
 }
