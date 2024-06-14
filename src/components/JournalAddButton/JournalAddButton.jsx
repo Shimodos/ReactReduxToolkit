@@ -20,8 +20,12 @@ const pluss = (
   </svg>
 );
 
-function JournalAddButton() {
-  return <CardButton className="journal-add">{pluss}New entry</CardButton>;
+function JournalAddButton({ clearForm }) {
+  return (
+    <CardButton className="journal-add" onClick={clearForm}>
+      {pluss}New entry
+    </CardButton>
+  );
 }
 
 export default JournalAddButton;
