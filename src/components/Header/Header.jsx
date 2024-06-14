@@ -1,19 +1,20 @@
-import { useState } from 'react';
-import styles from './Header.module.css';
 import SelectUser from '../SelectUser/SelectUser';
 import Button from '../Button/Button';
+import { useState } from 'react';
+import Logo from '../Logo/Logo';
 
 const logos = ['/Logo.svg', '/vite.svg'];
 
 function Header() {
   const [logo, setLogo] = useState(0);
+  console.log('Header rendered');
 
   const toggleLogo = () => {
     setLogo((prev) => (prev === 0 ? 1 : 0));
   };
   return (
     <>
-      <img className={styles.logo} src={logos[logo]} alt="Logo Journal"></img>
+      <Logo image={logos[logo]} />
       <SelectUser />
       <Button onClick={toggleLogo}>Toggle logo</Button>
     </>
