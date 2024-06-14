@@ -7,7 +7,7 @@ const logos = ['/Logo.svg', '/vite.svg'];
 
 function Header() {
   const [logo, setLogo] = useState(0);
-  console.log('Header rendered');
+  console.log('Header rendere');
 
   const toggleLogo = () => {
     setLogo((prev) => (prev === 0 ? 1 : 0));
